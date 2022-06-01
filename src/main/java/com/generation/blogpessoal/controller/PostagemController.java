@@ -46,11 +46,9 @@ public class PostagemController {
 		// select * from tb_postagens where id = input;
 	}
 	
-	@GetMapping ("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> getAll(@PathVariable String titulo) {
-		return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
-		
-		// select * from tb_postagens where titulo like "%titulo%";
+	@GetMapping
+	public ResponseEntity<List<Postagem>> GetAll() { 
+		return ResponseEntity.ok(postagemRepository.findAll());
 	}
 	
 	@PostMapping

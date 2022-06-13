@@ -1,6 +1,5 @@
 package com.generation.blogpessoal.model;
 
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -18,34 +17,50 @@ import javax.validation.constraints.Size;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-@Table (name = "tb_usuario")
+@Table(name = "tb_usuario")
 
 public class Usuario {
-	@Id 
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
-	@Size (min = 8, message = "O nome deve ter no minimo 8 caracteres")
+	@Size(min = 8, message = "O nome deve ter no minimo 8 caracteres")
 	private String nome;
-	
+
 	@NotBlank
 	@Email
-	@Size (min = 8, message = "O email do usuario deve ter no minimo 8 caracteres")
+	@Size(min = 8, message = "O email do usuario deve ter no minimo 8 caracteres")
 	private String usuario;
-	
-	@NotNull (message = "A senha não pode ser nula")
-	@Size (min = 8, message = "A senha deve ter no minimo 8 caracteres")
+
+	@NotNull(message = "A senha não pode ser nula")
+	@Size(min = 8, message = "A senha deve ter no minimo 8 caracteres")
 	private String senha;
-	
+
 	private String foto;
-	
+
 	@NotNull
 	private String tipoUsuario;
-	
+
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties ("usuario")
-	private List <Postagem>postagem;
+	@JsonIgnoreProperties("usuario")
+	private List<Postagem> postagem;
+
+	public Usuario(Long id, String nome, String usuario, String senha, String foto, String tipoUsuario) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+		this.tipoUsuario = tipoUsuario;
+	}
+	
+	public Usuario (String usuario, String senha) {
+		this.usuario = usuario;
+		this.senha = senha;
+	}
+
+	public Usuario() {}
 
 	public Long getId() {
 		return id;
@@ -102,7 +117,5 @@ public class Usuario {
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
-	
-	
 
 }

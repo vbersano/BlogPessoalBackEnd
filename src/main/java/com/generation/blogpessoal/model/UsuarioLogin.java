@@ -16,24 +16,22 @@ public class UsuarioLogin {
 
 	private String token;
 	
-	
-
 	public String getTipoUsuario() {
 		return tipoUsuario;
 	}
-
+	
 	public void setTipoUsuario(String tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
-
+	
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}

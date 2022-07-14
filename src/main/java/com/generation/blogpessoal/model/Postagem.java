@@ -36,6 +36,8 @@ public class Postagem {
 	@UpdateTimestamp //Usa a data do Windows
 	private LocalDateTime data;
 	
+	private long gostei;
+	
 	@ManyToOne
 	@JsonIgnoreProperties ("postagem")
 	private Tema tema;
@@ -92,8 +94,14 @@ public class Postagem {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
+
+	public long getGostei() {
+		return gostei;
+	}
+
+	public void setGostei(long gostei) {
+		this.gostei = gostei;
+	}
 	
 }
 
